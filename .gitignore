@@ -1,0 +1,9 @@
+*.iml
+atlassian-ide-plugin.xml
+target
+.idea
+rebel.xml
+.classpath
+.project
+.settings
+.checkstyle
