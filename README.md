@@ -13,35 +13,41 @@ The configuration file for the studio should point to database <code>hyperon.dem
 
 Hyperon Studio can be downloaded from https://hyperon.io/download.
 
-#####WHILE GOING THROUGH EXAMPLES, BE LOGGED IN HYPERON STUDIO
+##### WHILE GOING THROUGH EXAMPLES, BE LOGGED IN HYPERON STUDIO
 
 Learning order (group by package):
-#####1."Intro"
+##### 1."Intro"
     a) ParameterTest
     b) FunctionTest
     c) DomainTest
-#####2. "Parameters"
+    
+##### 2. "Parameters"
     a) SimpleTypesParameterTest
     b) MatrixParameterTest
     c) ArraysInMatrixParameterTest
     d) NullableValueInMatrixParameterTest
     e) CascadeCallParameterTest
-#####3. "Functions"
+    
+##### 3. "Functions"
     a) CallWithArgumentFunctionTest
     b) ComplexFunctionWithNestedCallsTest
     c) ExternalCallAsParameterFunctionTest
-#####4. "Domain"
+    
+##### 4. "Domain"
     a) SimpleDomainObjectTest
     b) ComplexAttributeDomainObjectTest
     c) CollectionDomainObjectTest
     d) ReferenceDomainObjectTest
     e) DomainTypeTest
-#####5. "Administration"
+    
+##### 5. "Administration"
     a) UsingEngineInDevmodeTest
-#####6. "Context"
+    
+##### 6. "Context"
     a) SimpleCustomContextWithAdaptersTest
     b) ContextWithCollectionAdaptersTest
 
 
-#####Extra info: Make sure to play around with any code, debug, explore and read javadoc of library.
+##### Extra info: Make sure to play around with any code, debug, explore and read javadoc of library.
+
 We'll appreciate any feedback.
