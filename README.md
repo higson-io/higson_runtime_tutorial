@@ -11,7 +11,7 @@ project directory. While doing the exercises you should run Hyperon Studio conne
 to review relevant data. The version of Hyperon Studio should match the version of Hyperon Runtime.
 The configuration file for the studio should point to database <code>hyperon.demo.motor.h2</code> from this project.
 
-Hyperon Studio can be downloaded from https://hyperon.io/download.
+Hyperon Studio can be downloaded from https://www.hyperon.io/docs/download.
 
 ##### WHILE GOING THROUGH EXAMPLES, BE LOGGED IN HYPERON STUDIO
 
