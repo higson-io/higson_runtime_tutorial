@@ -63,12 +63,12 @@ class SimpleCustomContextWithAdaptersTest {
 		assertEquals("Potter", context.getString("quote.driver.lastname"));
 		assertEquals("M", context.getString("quote.driver.gender"));
 		assertEquals(dateOfBirth(), context.getDate("quote.driver.dateofbirth"));
-		assertEquals(22, context.getInteger("quote.driver.age").intValue());
+		assertEquals(24, context.getInteger("quote.driver.age").intValue());
 
 		ParamValue entry = engine.get("demo.motor.coverage.pd.premium", context);
 		BigDecimal factor = entry.get("factor");
 
-		assertEquals(new BigDecimal("112.96"), factor);
+		assertEquals(new BigDecimal("110.24"), factor);
 	}
 
 	/**

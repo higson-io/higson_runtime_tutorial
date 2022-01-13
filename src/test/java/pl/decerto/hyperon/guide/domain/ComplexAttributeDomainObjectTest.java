@@ -12,9 +12,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import pl.decerto.hyperon.guide.HyperonIntegrationConfiguration;
 import pl.decerto.hyperon.runtime.core.HyperonContext;
 import pl.decerto.hyperon.runtime.core.HyperonEngine;
+import pl.decerto.hyperon.runtime.model.DomainAttributeDto;
 import pl.decerto.hyperon.runtime.model.HyperonDomainAttribute;
 import pl.decerto.hyperon.runtime.model.HyperonDomainObject;
-import pl.decerto.hyperon.runtime.model.MpDomainAttributeDto;
+import pl.decerto.hyperon.runtime.model.HyperonDomainAttribute;
+import pl.decerto.hyperon.runtime.model.Type;
+import pl.decerto.hyperon.runtime.model.proxy.HyperonDomainAttributeProxy;
 
 /**
  * This tests helps to understand how attributes of domain object work. Attribute may contain not only
@@ -46,7 +49,7 @@ class ComplexAttributeDomainObjectTest {
 		assertEquals("Bodily injury liability provides protection if you injure or kill someone while operating your car.",
 			descriptionAttr.getString(new HyperonContext()));
 
-		assertEquals(MpDomainAttributeDto.RawType.LITERAL,
+		assertEquals(Type.LITERAL,
 			descriptionAttr.getRawType());  // if value is directly written in attribute, then it will be marked as LITERAL
 		assertEquals("Bodily injury liability provides protection if you injure or kill someone while operating your car.",
 			descriptionAttr.getRawValue());
@@ -71,7 +74,7 @@ class ComplexAttributeDomainObjectTest {
 		assertEquals("Whether this coverage is available for current option", isAvailableAttr.getName());
 		assertTrue(isAvailableAttr.getBoolean(context));
 
-		assertEquals(MpDomainAttributeDto.RawType.PARAMETER,
+		assertEquals(Type.PARAMETER,
 			isAvailableAttr.getRawType());  // if value is directly written in attribute, then it will be marked as LITERAL
 		assertEquals("demo.motor.coverage.availability",
 			isAvailableAttr.getRawValue());
@@ -96,7 +99,7 @@ class ComplexAttributeDomainObjectTest {
 		assertEquals("Base premium for this coverage", premiumAttr.getName());
 		assertEquals(50.7, premiumAttr.getNumber(context));
 
-		assertEquals(MpDomainAttributeDto.RawType.FUNCTION,
+		assertEquals(Type.FUNCTION,
 			premiumAttr.getRawType());  // if value is directly written in attribute, then it will be marked as LITERAL
 		assertEquals("demo.motor.coverage.bi.calculatePremium",
 			premiumAttr.getRawValue());
@@ -126,7 +129,7 @@ class ComplexAttributeDomainObjectTest {
 		String descriptionCode = "";
 		String descriptionName = "";
 		String descriptionValue = "";
-		MpDomainAttributeDto.RawType rawType = null;
+		Type rawType = null;
 		String rawValue = "";
 
 		assertTrue(isAttributeDescriptionSet);
@@ -137,7 +140,7 @@ class ComplexAttributeDomainObjectTest {
 				"It also provides you with legal defense if another party files a lawsuit against you.",
 			descriptionValue);
 
-		assertEquals(MpDomainAttributeDto.RawType.LITERAL, rawType);
+		assertEquals(Type.LITERAL, rawType);
 		assertEquals("Property damage liability protects you if your car damages someone else's property. " +
 				"It also provides you with legal defense if another party files a lawsuit against you.",
 			rawValue);
@@ -160,7 +163,7 @@ class ComplexAttributeDomainObjectTest {
 		String positionCode = "";
 		String positionName = "";
 		int positionValue = 0;
-		MpDomainAttributeDto.RawType rawType = null;
+		Type rawType = null;
 		String rawValue = "";
 
 		assertTrue(isAttributePositionSet);
@@ -169,7 +172,7 @@ class ComplexAttributeDomainObjectTest {
 		assertEquals("Position on the screen or printout  (1, 2, ...)", positionName);
 		assertEquals(2, positionValue);
 
-		assertEquals(MpDomainAttributeDto.RawType.PARAMETER, rawType);
+		assertEquals(Type.PARAMETER, rawType);
 		assertEquals("demo.motor.coverage.position", rawValue);
 	}
 
@@ -190,7 +193,7 @@ class ComplexAttributeDomainObjectTest {
 		String premiumCode = "";
 		String premiumName = "";
 		int premiumValue = 0;
-		MpDomainAttributeDto.RawType rawType = null;
+		Type rawType = null;
 		String rawValue = "";
 
 		assertTrue(isAttributePremiumSet);
@@ -199,7 +202,7 @@ class ComplexAttributeDomainObjectTest {
 		assertEquals("Base premium for this coverage", premiumName);
 		assertEquals(10.11, premiumValue);
 
-		assertEquals(MpDomainAttributeDto.RawType.FUNCTION, rawType);
+		assertEquals(Type.FUNCTION, rawType);
 		assertEquals("demo.motor.plan.full.calculatePremium", rawValue);
 	}
 
