@@ -18,6 +18,9 @@ to `./db/hyperon.demo.motor.mv.db` file. Later, run a `bin/catalina.sh run` comm
 ##### WHILE GOING THROUGH EXAMPLES, BE LOGGED IN HYPERON STUDIO
 
 Learning order (group by package):
+
+&#9888; Notice: You can find equivalents of below classes in `kotlin` classpath, those classes ends with **KtTest**.
+
 ##### 1."Intro"
     a) ParameterTest
     b) FunctionTest
