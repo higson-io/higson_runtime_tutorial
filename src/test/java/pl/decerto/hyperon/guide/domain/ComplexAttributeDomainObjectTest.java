@@ -192,7 +192,7 @@ class ComplexAttributeDomainObjectTest {
 		boolean isAttributePremiumSet = false;
 		String premiumCode = "";
 		String premiumName = "";
-		int premiumValue = 0;
+		double premiumValue = 0d;
 		Type rawType = null;
 		String rawValue = "";
 
