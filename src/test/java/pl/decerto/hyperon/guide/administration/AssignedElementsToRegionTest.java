@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +15,7 @@ import pl.decerto.hyperon.runtime.core.HyperonContext;
 import pl.decerto.hyperon.runtime.core.HyperonEngine;
 import pl.decerto.hyperon.runtime.model.HyperonDomainObject;
 import pl.decerto.hyperon.runtime.rhino.RhinoDate;
+import spock.lang.Ignore;
 
 /**
  * <p>This section helps developer to understand concept of regions, versions and scheduling(timeline) in Hyperon. Three most important parts of Hyperon:
@@ -126,7 +127,7 @@ class AssignedElementsToRegionTest {
 	 * 6. Get value from parameter and assign it to result2.
 	 * 7. Clear effective versions.
 	 */
-	@Ignore
+	@Disabled
 	void todo_shouldCallProperVersionOfParameterInRegion_basedOnSetEffectiveVersion() {
 
 		String result1 = "";
