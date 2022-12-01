@@ -15,7 +15,6 @@ import pl.decerto.hyperon.runtime.core.HyperonContext;
 import pl.decerto.hyperon.runtime.core.HyperonEngine;
 import pl.decerto.hyperon.runtime.model.HyperonDomainObject;
 import pl.decerto.hyperon.runtime.rhino.RhinoDate;
-import spock.lang.Ignore;
 
 /**
  * <p>This section helps developer to understand concept of regions, versions and scheduling(timeline) in Hyperon. Three most important parts of Hyperon:
