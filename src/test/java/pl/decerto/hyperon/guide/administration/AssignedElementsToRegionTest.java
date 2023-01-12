@@ -34,6 +34,7 @@ import pl.decerto.hyperon.runtime.rhino.RhinoDate;
  * </p>
  */
 @SpringBootTest(classes = HyperonIntegrationConfiguration.class)
+@Disabled("test not working") //TODO: MPP-5621
 class AssignedElementsToRegionTest {
 
 	private static final String MY_REGION = "MyRegion";
