@@ -16,7 +16,7 @@ import pl.decerto.hyperon.runtime.core.HyperonEngine;
 import pl.decerto.hyperon.runtime.model.HyperonDomainAttribute;
 import pl.decerto.hyperon.runtime.model.HyperonDomainObject;
 
-@SpringBootTest(classes = HyperonIntegrationConfiguration.class)
+@SpringBootTest(classes = HyperonIntegrationConfiguration.class, properties = {"hyperon.profile=DEMO"})
 class CollectionDomainObjectTest {
 
 	@Value("${hyperon.profile}")
