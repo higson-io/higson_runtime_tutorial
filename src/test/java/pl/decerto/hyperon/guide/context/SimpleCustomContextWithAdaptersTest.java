@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.Year;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -48,11 +49,12 @@ class SimpleCustomContextWithAdaptersTest {
 
 	@Test
 	void shouldGetValueFromParameterUsingContextAsAdapter() {
+		final int howOld = 24;
 		Driver driver = new Driver()
 			.setFirstName("John")
 			.setLastName("Potter")
 			.setGender("M")
-			.setDateOfBirth(dateOfBirth());
+			.setDateOfBirth(dateOfBirth(howOld));
 
 		Quote quote = new Quote("FULL", driver);
 
@@ -62,8 +64,8 @@ class SimpleCustomContextWithAdaptersTest {
 		assertEquals("John", context.getString("quote.driver.firstname"));
 		assertEquals("Potter", context.getString("quote.driver.lastname"));
 		assertEquals("M", context.getString("quote.driver.gender"));
-		assertEquals(dateOfBirth(), context.getDate("quote.driver.dateofbirth"));
-		assertEquals(24, context.getInteger("quote.driver.age").intValue());
+		assertEquals(dateOfBirth(howOld), context.getDate("quote.driver.dateofbirth"));
+		assertEquals(howOld, context.getInteger("quote.driver.age").intValue());
 
 		ParamValue entry = engine.get("demo.motor.coverage.pd.premium", context);
 		BigDecimal factor = entry.get("factor");
@@ -127,8 +129,9 @@ class SimpleCustomContextWithAdaptersTest {
 		assertEquals(0.12, result, 0.00001);
 	}
 
-	private Date dateOfBirth() {
-		return Date.from(LocalDate.of(1997, Month.APRIL, 15).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+	private Date dateOfBirth(int howOld) {
+		final int nowYear = Year.now().getValue();
+		return Date.from(LocalDate.of(nowYear - howOld, Month.JANUARY, 1).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 	}
 
 }

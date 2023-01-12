@@ -16,7 +16,7 @@ import pl.decerto.hyperon.runtime.model.HyperonDomainObject;
 /**
  * Here you can learn about retrieving simple domain object and some basic configuration information about it.
  */
-@SpringBootTest(classes = HyperonIntegrationConfiguration.class)
+@SpringBootTest(classes = HyperonIntegrationConfiguration.class, properties = {"hyperon.profile=DEMO"})
 class SimpleDomainObjectTest {
 
 	@Value("${hyperon.profile}")
