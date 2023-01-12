@@ -198,7 +198,6 @@ internal class SimpleTypesParameterKtTest {
      */
 //    @Disabled("Remove this annotation when ready to run the test")
     @Test
-    @Disabled("Remove this annotation when ready to run the test")
     fun `todo should get all simple values from parameter`() {
         val matchedRows: Int = TODO()
         val result1: Date = TODO()
