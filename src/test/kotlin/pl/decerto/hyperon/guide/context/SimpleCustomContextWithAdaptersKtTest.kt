@@ -15,7 +15,6 @@ import pl.decerto.hyperon.guide.context.model.Quote
 import pl.decerto.hyperon.runtime.core.HyperonEngine
 import java.math.BigDecimal
 import java.time.LocalDate
-import java.time.Month.APRIL
 import java.time.ZoneId.systemDefault
 import java.util.*
 
@@ -114,10 +113,14 @@ internal class SimpleCustomContextWithAdaptersKtTest {
         assertEquals(0.12, result, 0.00001)
     }
 
-    private fun dateOfBirth(): Date = Date.from(
-        LocalDate.of(1998, APRIL, 15)
-            .atStartOfDay()
-            .atZone(systemDefault())
-            .toInstant()
-    )
+    private fun dateOfBirth(): Date {
+        val expectedDriverAge = 24L
+        return Date.from(
+            LocalDate.now()
+                .minusYears(expectedDriverAge)
+                .atStartOfDay()
+                .atZone(systemDefault())
+                .toInstant()
+        )
+    }
 }

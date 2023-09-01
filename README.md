@@ -11,7 +11,7 @@ project directory. While doing the exercises you should run Hyperon Studio conne
 to review relevant data. The version of Hyperon Studio should match the version of Hyperon Runtime.
 The configuration file for the studio should point to database <code>hyperon.demo.motor.h2</code> from this project.
 
-Hyperon Studio can be downloaded from [here](https://d3if2y4240qge3.cloudfront.net/repo/releases/2.2.2/hyperon-studio-2.2.2.zip).  
+Hyperon Studio can be downloaded from [here](https://d3if2y4240qge3.cloudfront.net/repo/releases/2.3.0/hyperon-studio-2.3.0.zip).  
 In the application.properties of downloaded project please point an `hyperon.database.url` property   
 to `./db/hyperon.demo.motor.mv.db` file. Later, run a `bin/catalina.sh run` command.
 
