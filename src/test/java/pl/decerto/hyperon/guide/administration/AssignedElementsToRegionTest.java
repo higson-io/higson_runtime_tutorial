@@ -4,12 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import pl.decerto.hyperon.guide.HyperonIntegrationConfiguration;
 import pl.decerto.hyperon.runtime.core.HyperonContext;
 import pl.decerto.hyperon.runtime.core.HyperonEngine;
@@ -45,16 +45,22 @@ class AssignedElementsToRegionTest {
 	@Value("${hyperon.profile}")
 	private String profile;
 
+	@BeforeEach
+	void clearAnyEffective() {
+		hyperonEngine.clearEffectiveSetup();
+		hyperonEngine.clearEffectiveVersions();
+		hyperonEngine.clearEffectiveDate();
+	}
+
 	/**
 	 * This test presents how to call different versions of same function based on Timeline defined in Hyperon Studio.
 	 */
 	@Test
 	void shouldCallProperVersionOfFunctionInRegion_basedOnSetEffectiveDate() {
-		hyperonEngine.clearEffectiveSetup();        //FIXME: remove it, when MPP-2527 will be fixed
 		HyperonContext context = new HyperonContext("input", "My test input");
 
 		// setting effective date so based on defined timeline it will be:  version "1" of "MyRegion"
-		hyperonEngine.setEffectiveDate(RhinoDate.getDate(2019, 3, 16));
+		hyperonEngine.setEffectiveDate(RhinoDate.getDate(2019, 4, 18));
 
 		// it will call function that is assigned to region/version based on configuration in Hyperon Studio - "Timeline"
 		String resultVersion1 = (String) hyperonEngine.call("tutorial.versionable.function", context);
@@ -66,8 +72,6 @@ class AssignedElementsToRegionTest {
 		// it will call function that is assigned to region/version based on schedule
 		String resultVersion2 = (String) hyperonEngine.call("tutorial.versionable.function", context);
 		assertEquals("My test input from region MyRegion and version 2", resultVersion2);
-
-		hyperonEngine.clearEffectiveDate(); // this will remove effective date from next calls to Hyperon Engine
 	}
 
 	/**
@@ -77,20 +81,18 @@ class AssignedElementsToRegionTest {
 	void shouldCallProperVersionOfFunctionInRegion_basedOnSetEffectiveVersion() {
 		HyperonContext context = new HyperonContext("input", "My test input");
 		// setting version to "1" of "MyRegion"
-		hyperonEngine.setEffectiveVersion(MY_REGION, "1");
+		hyperonEngine.setEffectiveVersion(profile, MY_REGION, "1");
 
 		// it will call function that is assigned to region/version based on configuration in Hyperon Studio - "MyView"
 		String resultVersion1 = (String) hyperonEngine.call("tutorial.versionable.function", context);
 		assertEquals("My test input from region MyRegion and version 1", resultVersion1);
 
 		// setting version to "2" of "MyRegion"
-		hyperonEngine.setEffectiveVersion(MY_REGION, "2");
+		hyperonEngine.setEffectiveVersion(profile, MY_REGION, "2");
 
 		// it will call function that is assigned to region/version based on schedule
 		String resultVersion2 = (String) hyperonEngine.call("tutorial.versionable.function", context);
 		assertEquals("My test input from region MyRegion and version 2", resultVersion2);
-
-		hyperonEngine.clearEffectiveVersion(MY_REGION); // this will setup MyRegion to default version based on Hyperon Studio - "MyView"
 	}
 
 	/**
@@ -98,18 +100,16 @@ class AssignedElementsToRegionTest {
 	 */
 	@Test
 	void shouldGetProperVersionOfDomainInRegion_basedOnSetEffectiveVersion() {
-		hyperonEngine.setEffectiveVersion(MY_REGION, "1");
+		hyperonEngine.setEffectiveVersion(profile, MY_REGION, "1");
 		HyperonDomainObject domainV1 = hyperonEngine.getDomain(profile, "PLANS[LIAB]/DISCOUNTS[DISC]");
 
 		assertFalse(domainV1.getAttr("available").getBoolean(null));
 
-		hyperonEngine.setEffectiveVersion(MY_REGION, "2");
+		hyperonEngine.setEffectiveVersion(profile, MY_REGION, "2");
 
 		HyperonDomainObject domainV2 = hyperonEngine.getDomain(profile, "PLANS[LIAB]/DISCOUNTS[DISC]");
 
 		assertTrue(domainV2.getAttr("available").getBoolean(null));
-
-		hyperonEngine.clearEffectiveVersions();
 	}
 
 	/**
