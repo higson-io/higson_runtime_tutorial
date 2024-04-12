@@ -1,21 +1,21 @@
-# hyperon_runtime_tutorial
-This project was created for developers, who would like to learn more about Hyperon Runtime library.
+# Higson Runtime tutorial
+This project was created for developers, who would like to learn more about Higson Runtime library.
 
 All code examples are in package <code>src\test\java</code>.
 It is recommended to do the exercises in the right order, from basic to advanced. Test cases are grouped
 logically and each starts with usage examples. At the end of each test group there are tests prefixed
 <code>todo_</code> and <code>@Disabled</code> annotation, which contain exercises.
 
-In this project the Hyperon Runtime connects to H2 database file located in /db sub-directory of the root
-project directory. While doing the exercises you should run Hyperon Studio connected to this database,
-to review relevant data. The version of Hyperon Studio should match the version of Hyperon Runtime.
+In this project the Higson Runtime connects to H2 database file located in /db sub-directory of the root
+project directory. While doing the exercises you should run Higson Studio connected to this database,
+to review relevant data. The version of Higson Studio should match the version of Higson Runtime.
 The configuration file for the studio should point to database <code>hyperon.demo.motor.h2</code> from this project.
 
-Hyperon Studio can be downloaded from [here](https://d3if2y4240qge3.cloudfront.net/repo/releases/2.3.0/hyperon-studio-2.3.0.zip).  
+Higson Studio can be downloaded from [here](https://www.higson.io/download).  
 In the application.properties of downloaded project please point an `hyperon.database.url` property   
 to `./db/hyperon.demo.motor.mv.db` file. Later, run a `bin/catalina.sh run` command.
 
-##### WHILE GOING THROUGH EXAMPLES, BE LOGGED IN HYPERON STUDIO
+##### WHILE GOING THROUGH EXAMPLES, BE LOGGED IN HIGSON STUDIO
 
 Learning order (group by package):
 
